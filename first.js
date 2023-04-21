@@ -1,20 +1,17 @@
-const coins = [5, 7, 1, 1, 2, 3, 22]
+function getMinimumChange(coins) {
+  coins.sort((a, b) => a - b);
+  let minimumChange = 1;
 
-function getMinimalChange(coins) {
-  coins.sort((a, b) => a - b)
-  console.log(coins);
-
-  let minimalChange = 1
-  //[1, 1, 2, 3, 5, 7, 22]
-  for (i = 0; i < coins.lenght; i++) {
-    if (coins[i] >= minimalChange) {
-      minimalChange += coins[i]
-    } else {
-      break
+  for (let i = 0; i < coins.length; i++) {
+    if (coins[i] > minimumChange) {
+      return minimumChange;
     }
+    minimumChange += coins[i];
   }
 
-  return minimalChange
+  return minimumChange;
 }
 
-console.log(getMinimalChange(coins))
+console.log(minimumUncreatableValue([5, 7, 1, 1, 2, 3, 22])); // 20
+console.log(minimumUncreatableValue([1, 1, 1, 1, 1])); // 6
+console.log(minimumUncreatableValue([1, 5, 1, 1, 1, 10, 15, 20, 100])); // 55
